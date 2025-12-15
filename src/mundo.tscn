@@ -1,0 +1,501 @@
+[gd_scene load_steps=44 format=3 uid="uid://cjiyu1l4575hu"]
+
+[ext_resource type="Script" uid="uid://cnntd3qyehosp" path="res://src/mundo.gd" id="1_qnvfl"]
+[ext_resource type="Texture2D" uid="uid://da3eyw5vv3xc4" path="res://imagens/tela.png" id="2_g4wns"]
+[ext_resource type="Texture2D" uid="uid://y0fyfl1cv6rq" path="res://imagens/mesa2.png" id="3_acmgr"]
+[ext_resource type="Script" uid="uid://jbqduxqurlfi" path="res://src/quadro_node.gd" id="4_acmgr"]
+[ext_resource type="Texture2D" uid="uid://dna7abbdye7hk" path="res://imagens/caixa3.png" id="4_snl88"]
+[ext_resource type="Texture2D" uid="uid://bs71ewthgg8j3" path="res://imagens/Novo Projeto(2).png" id="5_b7i0f"]
+[ext_resource type="Script" uid="uid://k1jjqpdjoiwo" path="res://src/caixa_node.gd" id="6_brdhw"]
+[ext_resource type="Texture2D" uid="uid://rvl3613ls4ml" path="res://imagens/caixaAberta2.png" id="6_g4wns"]
+[ext_resource type="Script" uid="uid://bcr6f1noruiwf" path="res://src/vaso_node.gd" id="8_cdjb8"]
+[ext_resource type="Texture2D" uid="uid://cwox17547r0in" path="res://imagens/vasoFlor.png" id="8_snl88"]
+[ext_resource type="Texture2D" uid="uid://o2algnn03iso" path="res://imagens/florCaida.png" id="9_b7i0f"]
+[ext_resource type="Texture2D" uid="uid://dkhmku657qdmd" path="res://imagens/cat 1 (64х64).png" id="12_1dm8p"]
+[ext_resource type="Script" uid="uid://clsbfcpoo87ap" path="res://src/gato_node.gd" id="12_idcm3"]
+[ext_resource type="Script" uid="uid://nthogtt1kgm2" path="res://src/control.gd" id="14_xixul"]
+
+[sub_resource type="Animation" id="Animation_acmgr"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("quadroSprite:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="Animation" id="Animation_g4wns"]
+resource_name = "balancar"
+length = 0.6
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("quadroSprite:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.23333333, 0.4, 0.53333336, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 0.57434916),
+"update": 0,
+"values": [0.0, -0.80634211442138, 0.2303834612632513, -0.12217304763960309, 0.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_snl88"]
+_data = {
+&"RESET": SubResource("Animation_acmgr"),
+&"balancar": SubResource("Animation_g4wns")
+}
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qnvfl"]
+size = Vector2(1040.0903, 1040.0901)
+
+[sub_resource type="Animation" id="Animation_t8hnq"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("vasoNormal:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="Animation" id="Animation_idcm3"]
+resource_name = "derrubar"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("vasoNormal:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.20000002),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 0.923279174305]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_t8hnq"]
+_data = {
+&"RESET": SubResource("Animation_t8hnq"),
+&"derrubar": SubResource("Animation_idcm3")
+}
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wk7l2"]
+atlas = ExtResource("12_1dm8p")
+region = Rect2(576, 4032, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kfnw2"]
+atlas = ExtResource("12_1dm8p")
+region = Rect2(640, 4032, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_g3e8e"]
+atlas = ExtResource("12_1dm8p")
+region = Rect2(704, 4032, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cs7ju"]
+atlas = ExtResource("12_1dm8p")
+region = Rect2(384, 1088, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ingns"]
+atlas = ExtResource("12_1dm8p")
+region = Rect2(448, 1088, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_74t1y"]
+atlas = ExtResource("12_1dm8p")
+region = Rect2(512, 1088, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fwofb"]
+atlas = ExtResource("12_1dm8p")
+region = Rect2(576, 1088, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_a8d0o"]
+atlas = ExtResource("12_1dm8p")
+region = Rect2(640, 1088, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_g16lc"]
+atlas = ExtResource("12_1dm8p")
+region = Rect2(704, 1088, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pfkg6"]
+atlas = ExtResource("12_1dm8p")
+region = Rect2(768, 1088, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_s21v1"]
+atlas = ExtResource("12_1dm8p")
+region = Rect2(832, 1088, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_idcm3"]
+atlas = ExtResource("12_1dm8p")
+region = Rect2(384, 832, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_t8hnq"]
+atlas = ExtResource("12_1dm8p")
+region = Rect2(512, 832, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xixul"]
+atlas = ExtResource("12_1dm8p")
+region = Rect2(448, 832, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ob1rh"]
+atlas = ExtResource("12_1dm8p")
+region = Rect2(576, 832, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_v2gsy"]
+atlas = ExtResource("12_1dm8p")
+region = Rect2(640, 832, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2sxgj"]
+atlas = ExtResource("12_1dm8p")
+region = Rect2(704, 832, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_w5p43"]
+atlas = ExtResource("12_1dm8p")
+region = Rect2(768, 832, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ok422"]
+atlas = ExtResource("12_1dm8p")
+region = Rect2(832, 832, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5mscq"]
+atlas = ExtResource("12_1dm8p")
+region = Rect2(768, 3840, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cjbop"]
+atlas = ExtResource("12_1dm8p")
+region = Rect2(832, 3840, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_cs7ju"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wk7l2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kfnw2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_g3e8e")
+}],
+"loop": false,
+"name": &"atacar",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cs7ju")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ingns")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_74t1y")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fwofb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_a8d0o")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_g16lc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pfkg6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_s21v1")
+}],
+"loop": true,
+"name": &"coceira",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_idcm3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_t8hnq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xixul")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ob1rh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_v2gsy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2sxgj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_w5p43")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ok422")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5mscq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cjbop")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5mscq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cjbop")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5mscq")
+}],
+"loop": false,
+"name": &"raiva",
+"speed": 5.0
+}]
+
+[node name="mundo" type="Node2D" node_paths=PackedStringArray("vasoNode", "quadroNode", "gatoNode")]
+script = ExtResource("1_qnvfl")
+vasoNode = NodePath("vasoNode")
+quadroNode = NodePath("quadroNode")
+gatoNode = NodePath("gatoNode")
+
+[node name="fundo" type="Sprite2D" parent="."]
+position = Vector2(506, 309)
+scale = Vector2(0.7795327, 0.82013875)
+texture = ExtResource("2_g4wns")
+
+[node name="mesa" type="Sprite2D" parent="."]
+position = Vector2(489.00003, 561)
+scale = Vector2(1.2466081, 0.7209266)
+texture = ExtResource("3_acmgr")
+
+[node name="quadroNode" type="Node" parent="."]
+script = ExtResource("4_acmgr")
+
+[node name="quadroAnimation" type="AnimationPlayer" parent="quadroNode"]
+libraries = {
+&"": SubResource("AnimationLibrary_snl88")
+}
+
+[node name="quadroSprite" type="Sprite2D" parent="quadroNode"]
+position = Vector2(822.00006, 65)
+scale = Vector2(0.19902125, 0.19902124)
+texture = ExtResource("5_b7i0f")
+centered = false
+offset = Vector2(-625, -145)
+region_rect = Rect2(1000, 0, 0, 0)
+
+[node name="quadroArea2D" type="Area2D" parent="quadroNode/quadroSprite"]
+position = Vector2(160.78687, 160.78687)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="quadroNode/quadroSprite/quadroArea2D"]
+position = Vector2(-165.8119, 733.59)
+shape = SubResource("RectangleShape2D_qnvfl")
+
+[node name="caixaNode" type="Node" parent="." node_paths=PackedStringArray("vasoNode")]
+script = ExtResource("6_brdhw")
+vasoNode = NodePath("../vasoNode")
+
+[node name="caixaNormal" type="Sprite2D" parent="caixaNode"]
+position = Vector2(223, 528)
+scale = Vector2(1, 0.7669173)
+texture = ExtResource("4_snl88")
+
+[node name="caixaArea2D" type="Area2D" parent="caixaNode/caixaNormal"]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="caixaNode/caixaNormal/caixaArea2D"]
+polygon = PackedVector2Array(202, -114, 199, -11, 74, 111, 73, -2)
+
+[node name="caixaAberta" type="Sprite2D" parent="caixaNode"]
+visible = false
+position = Vector2(458, 531)
+scale = Vector2(1, 0.7631579)
+texture = ExtResource("6_g4wns")
+
+[node name="caixaAbertaArea2D" type="Area2D" parent="caixaNode/caixaAberta"]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="caixaNode/caixaAberta/caixaAbertaArea2D"]
+polygon = PackedVector2Array(-162, -1.3103638, -36, -114, 173, -112.6897, 172, -13, 45, 110, -163, 111.37927)
+
+[node name="vasoNode" type="Node" parent="."]
+script = ExtResource("8_cdjb8")
+
+[node name="vasoCaido" type="Sprite2D" parent="vasoNode"]
+visible = false
+position = Vector2(752.00006, 495)
+scale = Vector2(0.5097552, 0.4992311)
+texture = ExtResource("9_b7i0f")
+
+[node name="vasoCaidoArea2D" type="Area2D" parent="vasoNode/vasoCaido"]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="vasoNode/vasoCaido/vasoCaidoArea2D"]
+polygon = PackedVector2Array(-113.78027, -44.06775, -135.35925, -86.13245, -376.6515, -10.015381, -368.8047, 156.24023, -115.74194, 152.23413, -102.00989, 40.061646)
+
+[node name="vasoNormal" type="Sprite2D" parent="vasoNode"]
+position = Vector2(559.00006, 567)
+scale = Vector2(0.43409088, 0.42512888)
+texture = ExtResource("8_snl88")
+offset = Vector2(-69.10986, -461.03668)
+
+[node name="vasoAnimation" type="AnimationPlayer" parent="vasoNode"]
+libraries = {
+&"": SubResource("AnimationLibrary_t8hnq")
+}
+
+[node name="eventoTimer" type="Timer" parent="."]
+wait_time = 6.0
+autostart = true
+
+[node name="gatoNode" type="Node2D" parent="." node_paths=PackedStringArray("vasoNode")]
+script = ExtResource("12_idcm3")
+vasoNode = NodePath("../vasoNode")
+
+[node name="gatoAnimation" type="AnimatedSprite2D" parent="gatoNode"]
+z_index = 1
+position = Vector2(236, 413)
+scale = Vector2(7.125, 7.125)
+sprite_frames = SubResource("SpriteFrames_cs7ju")
+animation = &"idle"
+
+[node name="gatoArea2D" type="Area2D" parent="gatoNode/gatoAnimation"]
+position = Vector2(210, 501)
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="gatoNode/gatoAnimation/gatoArea2D"]
+polygon = PackedVector2Array(-222.63158, -503.66666, -214.07018, -513.0702, -198.77193, -515.0351, -191.33333, -505.2105, -194.98245, -495.10526, -204.38596, -486.6842, -221.64912, -491.73682)
+
+[node name="animationTimer" type="Timer" parent="gatoNode"]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Control" type="Control" parent="CanvasLayer" node_paths=PackedStringArray("vasoNode", "painel_game_over", "painel_Vitoria")]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+mouse_filter = 2
+script = ExtResource("14_xixul")
+vasoNode = NodePath("../../vasoNode")
+painel_game_over = NodePath("../PainelGameOver")
+painel_Vitoria = NodePath("../PainelVitoria")
+
+[node name="TempoTimer" type="Timer" parent="CanvasLayer/Control"]
+autostart = true
+
+[node name="TempoLabel" type="Label" parent="CanvasLayer/Control"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.87500006
+anchor_top = 1.0
+anchor_right = 7.8250003
+anchor_bottom = 4.3500004
+offset_top = -5.0
+offset_bottom = -1.5258789e-05
+theme_type_variation = &"HeaderLarge"
+
+[node name="PainelGameOver" type="Control" parent="CanvasLayer"]
+visible = false
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer/PainelGameOver"]
+layout_mode = 0
+offset_right = 1242.0
+offset_bottom = 630.0
+color = Color(0.93917704, 0.23516467, 0.33307406, 0.62352943)
+
+[node name="GameOverLabel" type="Label" parent="CanvasLayer/PainelGameOver"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 12.450001
+anchor_top = 5.517
+anchor_right = 15.500001
+anchor_bottom = 9.141001
+offset_left = 13.9999695
+offset_top = 90.31999
+offset_right = -6.1035156e-05
+offset_bottom = -31.640015
+text = "Você perdeu!
+FIM DE JOGO!!"
+
+[node name="PlayAgainButton" type="Button" parent="CanvasLayer/PainelGameOver"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 11.05
+anchor_top = 8.650001
+anchor_right = 16.95
+anchor_bottom = 10.200001
+offset_top = -3.0517578e-05
+offset_bottom = -3.0517578e-05
+text = "Jogar novamente"
+
+[node name="PainelVitoria" type="Control" parent="CanvasLayer"]
+visible = false
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer/PainelVitoria"]
+layout_mode = 0
+offset_right = 1242.0
+offset_bottom = 630.0
+color = Color(0.35745272, 0.6159806, 0.29004124, 0.62352943)
+
+[node name="VitoriaLabel" type="Label" parent="CanvasLayer/PainelVitoria"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 12.450001
+anchor_top = 5.517
+anchor_right = 15.500001
+anchor_bottom = 9.141001
+offset_left = 7.9999695
+offset_top = 90.31999
+offset_right = -1.000061
+offset_bottom = 20.359985
+text = "Você ganhou!! 
+Parabéns!
+"
+horizontal_alignment = 1
+
+[node name="PlayAgainButton" type="Button" parent="CanvasLayer/PainelVitoria"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 11.05
+anchor_top = 8.650001
+anchor_right = 16.95
+anchor_bottom = 10.200001
+offset_top = 19.99997
+offset_bottom = 19.99997
+text = "Jogar novamente"
+
+[connection signal="input_event" from="quadroNode/quadroSprite/quadroArea2D" to="quadroNode" method="_on_quadro_area_2d_input_event"]
+[connection signal="input_event" from="caixaNode/caixaNormal/caixaArea2D" to="caixaNode" method="_on_caixa_area_2d_input_event"]
+[connection signal="mouse_entered" from="caixaNode/caixaNormal/caixaArea2D" to="." method="mudarCursorMao"]
+[connection signal="mouse_exited" from="caixaNode/caixaNormal/caixaArea2D" to="." method="mudarCursorNormal"]
+[connection signal="input_event" from="caixaNode/caixaAberta/caixaAbertaArea2D" to="caixaNode" method="_on_caixa_aberta_area_2d_input_event"]
+[connection signal="mouse_entered" from="caixaNode/caixaAberta/caixaAbertaArea2D" to="." method="mudarCursorMao"]
+[connection signal="mouse_exited" from="caixaNode/caixaAberta/caixaAbertaArea2D" to="." method="mudarCursorNormal"]
+[connection signal="input_event" from="vasoNode/vasoCaido/vasoCaidoArea2D" to="vasoNode" method="_on_vaso_caido_area_2d_input_event"]
+[connection signal="input_event" from="gatoNode/gatoAnimation/gatoArea2D" to="gatoNode" method="_on_gato_area_2d_input_event"]
+[connection signal="pressed" from="CanvasLayer/PainelGameOver/PlayAgainButton" to="." method="_on_play_again_button_pressed"]
+[connection signal="pressed" from="CanvasLayer/PainelVitoria/PlayAgainButton" to="." method="_on_play_again_button_pressed"]
